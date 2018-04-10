@@ -152,7 +152,10 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.json', 'jsm', '.jsx', '.vue'],
     alias: {
-      '@': resolve('src')
+      '@': resolve('src'),
+      components: resolve('src/components'),
+      containers: resolve('src/containers'),
+      store: resolve('src/store')
     }
   },
   module: {
@@ -212,7 +215,7 @@ module.exports = {
       //   loader: 'url-loader?limit=8192&name=img/[name].[hash:7].[ext]'
       // }
       {
-        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+        test: /\.(png|jpe?g|gif|svg|ico)(\?.*)?$/,
         loader: 'url-loader',
         // exclude: [resolve('src/icons')],
         options: {
@@ -251,7 +254,7 @@ module.exports = {
 
       // Optional
       appMountId: 'app',
-      title: 'Webpack 4 demo',
+      title: 'react-toutiao',
       favicon: path.join(PATHS.src, 'favicon.ico'),
       meta: [
         {

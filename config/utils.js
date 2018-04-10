@@ -1,18 +1,18 @@
-const path = require('path')
-const config = require('./config')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const packageConfig = require('../package.json')
+const path = require('path');
+const config = require('./config');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const packageConfig = require('../package.json');
 
-exports.assetsPath = function (_path) {
-  const assetsSubDirectory = config.assetsSubDirectory
-  return path.posix.join(assetsSubDirectory, _path)
-}
+exports.assetsPath = function(_path) {
+  const assetsSubDirectory = config.assetsSubDirectory;
+  return path.posix.join(assetsSubDirectory, _path);
+};
 
 /**
  * 统一处理css-loader
  * @param {*} options
  */
-exports.cssLoaders = function (options) {
+exports.cssLoaders = function(options) {
   options = options || {};
 
   const cssLoader = {
@@ -37,6 +37,9 @@ exports.cssLoaders = function (options) {
     options: {
       sourceMap: options.sourceMap,
       ident: 'postcss',
+      config: {
+        path: '.postcssrc.js'
+      }
       // plugins: [
       //   require('postcss-cssnext')()
       // ]
@@ -73,4 +76,4 @@ exports.cssLoaders = function (options) {
     stylus: generateLoaders('stylus'),
     styl: generateLoaders('stylus')
   };
-}
+};
