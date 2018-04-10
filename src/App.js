@@ -1,12 +1,16 @@
 import React from 'react';
+import { Provider } from 'react-redux';
+
 // import styles from './App.css';
 import './styles/index.scss';
-import Router from './Router';
-
+import Router from './router';
+import store from './store';
 const App = () => (
-  <div className="App">
-    <Router />
-  </div>
+  <Provider store={store}>
+    <div className="App">
+      <Router />
+    </div>
+  </Provider>
 );
 
 export default App;

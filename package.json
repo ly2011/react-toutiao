@@ -26,6 +26,7 @@
     "@babel/core": "^7.0.0-beta.40",
     "@babel/plugin-proposal-class-properties": "^7.0.0-beta.40",
     "@babel/plugin-syntax-dynamic-import": "^7.0.0-beta.40",
+    "@babel/plugin-syntax-object-rest-spread": "^7.0.0-beta.44",
     "@babel/plugin-transform-runtime": "^7.0.0-beta.40",
     "@babel/preset-env": "^7.0.0-beta.40",
     "@babel/preset-react": "^7.0.0-beta.40",
@@ -101,6 +102,8 @@
     "enquire-js": "^0.2.1",
     "fastclick": "^1.0.6",
     "glamor": "^2.20.40",
+    "history": "^4.7.2",
+    "localforage": "^1.7.1",
     "lodash": "^4.17.5",
     "lodash-decorators": "^5.0.0",
     "moment": "^2.21.0",
@@ -116,9 +119,11 @@
     "react-loadable": "^5.3.1",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",
+    "react-router-redux": "^4.0.8",
     "react-router-transition": "^1.2.1",
     "redux": "^3.7.2",
     "redux-actions": "^2.3.0",
+    "redux-persist": "^5.9.1",
     "redux-thunk": "^2.2.0"
   },
   "browserslist": [

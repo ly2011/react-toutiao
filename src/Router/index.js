@@ -1,10 +1,10 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
-import { LocaleProvider } from 'antd';
-import zhCN from 'antd/lib/locale-provider/zh_CN';
+import { Router, Route, Link, Switch } from 'react-router-dom';
 
 // import asyncComponent from '../utils/AsyncComponent'
 import Loadable from 'react-loadable';
+import createHistory from 'history/createBrowserHistory';
+
 import Loading from '../components/Loading';
 
 // import Home from '../containers/Home'
@@ -30,32 +30,32 @@ const Topics = Loadable({
   loading: Loading
 });
 
+const history = createHistory();
+
 const RouterConfig = () => {
   return (
-    <LocaleProvider locale={zhCN}>
-      <Router>
-        <div>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/topics">Topics</Link>
-            </li>
-          </ul>
+    <Router history={history}>
+      <div>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/about">About</Link>
+          </li>
+          <li>
+            <Link to="/topics">Topics</Link>
+          </li>
+        </ul>
 
-          <hr />
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/about" component={About} />
-            <Route path="/topics" component={Topics} />
-          </Switch>
-        </div>
-      </Router>
-    </LocaleProvider>
+        <hr />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/about" component={About} />
+          <Route path="/topics" component={Topics} />
+        </Switch>
+      </div>
+    </Router>
   );
 };
 

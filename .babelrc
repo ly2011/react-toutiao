@@ -31,6 +31,7 @@
     "transform-decorators-legacy",
     "@babel/plugin-proposal-class-properties",
     "@babel/plugin-syntax-dynamic-import",
+    "@babel/plugin-syntax-object-rest-spread",
     "react-loadable/babel", [
       "import",
       {
