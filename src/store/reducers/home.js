@@ -1,8 +1,7 @@
 import * as types from '@/store/types';
 
 const initialState = {
-  topics: [],
-  loading: false
+  topics: []
 };
 
 const homeState = (state = initialState, action) => {

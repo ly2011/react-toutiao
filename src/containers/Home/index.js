@@ -7,12 +7,18 @@ import * as comActions from '@/store/actions/com';
 import * as homeActions from '@/store/actions/home';
 
 class Home extends Component {
-  componentDidMount() {
+  async componentDidMount() {
     const { fetchTopics } = this.props.actions;
-    fetchTopics();
+    try {
+      const result = await fetchTopics();
+      if (result.success) {
+        console.log('topics: ', result);
+      } else {
+        console.log('请求失败');
+      }
+    } catch (error) {}
   }
   render() {
-    console.log(this.props);
     return (
       <div>
         <h2 className="title">Home Page</h2>

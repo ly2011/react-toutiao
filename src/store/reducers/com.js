@@ -2,7 +2,7 @@ import * as types from '@/store/types';
 
 const initialState = {
   title: '今日头条',
-  loading: 0
+  loading: false
 };
 
 const settingState = (state = initialState, action) => {
