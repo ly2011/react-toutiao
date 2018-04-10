@@ -8,11 +8,11 @@ import * as homeActions from '@/store/actions/home';
 
 class Home extends Component {
   componentDidMount() {
-    const { loading, fetchTopics } = this.props.actions;
-    console.log('loading: ', loading);
+    const { fetchTopics } = this.props.actions;
     fetchTopics();
   }
   render() {
+    console.log(this.props);
     return (
       <div>
         <h2 className="title">Home Page</h2>
