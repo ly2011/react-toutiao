@@ -1,7 +1,9 @@
 import * as types from '@/store/types';
 
 const initialState = {
-  topics: []
+  topics: [],
+  newsList: [],
+  newsIndex: 0
 };
 
 const homeState = (state = initialState, action) => {
