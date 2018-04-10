@@ -59,3 +59,4 @@ vendors.js：692KB
 
 5. [ant-design-demo](https://github.com/yezihaohao/react-admin)
 6. [react-toutiao](https://github.com/cd-dongzi/react-toutiao)
+7. [vue-toutiao](http://dzblog.cn/article/5a78609ec153997e3417a6d4)
