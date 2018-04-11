@@ -6,6 +6,10 @@ import { connect } from 'react-redux';
 import * as comActions from '@/store/actions/com';
 import * as homeActions from '@/store/actions/home';
 
+import TopBar from './components/TopBar/index';
+
+import styles from './style.scss';
+
 class Home extends Component {
   async componentDidMount() {
     const { fetchTopics } = this.props.actions;
@@ -18,10 +22,24 @@ class Home extends Component {
       }
     } catch (error) {}
   }
+  // async getListOfNew(newsIndex) {
+  //   const { fetchListOfNews } = this.props.actions;
+  //   const { newsList } = this.props.home;
+  //   try {
+  //     await fetchListOfNews(newsList[newsIndex], { newsList, newsIndex });
+  //   } catch (error) {}
+  // }
   render() {
+    const { newsList, newsIndex } = this.props.home;
+    const { fetchListOfNews, setNewsIndex } = this.props.actions;
     return (
-      <div>
-        <h2 className="title">Home Page</h2>
+      <div className={styles['home-container']}>
+        <TopBar
+          newsIndex={newsIndex}
+          newsList={newsList}
+          fetchListOfNews={fetchListOfNews}
+          setNewsIndex={setNewsIndex}
+        />
       </div>
     );
   }
@@ -37,5 +55,3 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
-
-// export default Home

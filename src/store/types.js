@@ -6,3 +6,6 @@ export const COM_CONF = 'COM_CONF';
 
 // home
 export const HOME_GET_ARTICLES = 'HOME_GET_ARTICLES';
+export const GET_LIST_OF_NEWS = 'GET_LIST_OF_NEWS';
+export const REFRESH_LIST_OF_NEWS = 'REFRESH_LIST_OF_NEWS';
+export const SET_NEWS_INDEX = 'SET_NEWS_INDEX';

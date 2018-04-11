@@ -110,7 +110,7 @@ module.exports = {
         use: utils.cssLoaders({ sourceMap: sourceMapEnabled, extract: isProduction, usePostCSS: true, modules: true })
           .css,
         include: PATHS.src,
-        exclude: resolve('src/styles')
+        exclude: [resolve('src/styles')]
       },
       {
         test: /\.css$/,
@@ -118,6 +118,7 @@ module.exports = {
           .css,
         include: [resolve('node_modules'), resolve('src/styles')]
       },
+
       {
         test: /\.scss$/,
         use: utils.cssLoaders({ sourceMap: sourceMapEnabled, extract: isProduction, usePostCSS: true, modules: true })
@@ -128,7 +129,7 @@ module.exports = {
         test: /\.scss$/,
         use: utils.cssLoaders({ sourceMap: sourceMapEnabled, extract: isProduction, usePostCSS: true, modules: false })
           .scss,
-        include: resolve('src/styles')
+        include: [resolve('node_modules'), resolve('src/styles')]
       },
       {
         test: /\.less$/,

@@ -14,15 +14,17 @@ module.exports = {
       jsx: true,
       experimentalObjectRestSpread: true
     },
-    sourceType: "module"
+    sourceType: 'module'
   },
-  plugins: ["prettier"],
+  plugins: ['prettier'],
   rules: {
     'import/no-extraneous-dependencies': 0,
-    "semi": 0,
-    "no-debugger": 0,
-    "no-console": 0,
-    "comma-dangle": 0,
-    "react/jsx-filename-extension": ["error", { "extensions": [".js", ".jsx"] }]
+    semi: 0,
+    'no-debugger': 0,
+    'no-console': 0,
+    'comma-dangle': 0,
+    'react/jsx-filename-extension': ['error', { extensions: ['.js', '.jsx'] }],
+    'no-script-url': 0,
+    'no-unused-vars': 0
   }
 };
