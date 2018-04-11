@@ -3,7 +3,7 @@ export const BASE_API = 'https://api.github.com';
 export const footerBarList = [
   {
     icon: 'home',
-    path: '/home',
+    path: '/index',
     title: '首页'
   },
   {

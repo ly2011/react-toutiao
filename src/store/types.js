@@ -13,3 +13,4 @@ export const SET_NEWS_INDEX = 'SET_NEWS_INDEX';
 // video
 export const GET_VIDEO_LIST = 'GET_VIDEO_LIST';
 export const REFRESH_VIDEO_LIST = 'REFRESH_VIDEO_LIST';
+export const RENDER_VIDEO_LIST = 'RENDER_VIDEO_LIST';

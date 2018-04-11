@@ -35,6 +35,11 @@ const Login = Loadable({
   loading: Loading
 });
 
+const Video = Loadable({
+  loader: () => import('../containers/Video'),
+  loading: Loading
+});
+
 const BasicLayout = Loadable({
   loader: () => import('../layouts/BasicLayout'),
   loading: Loading
@@ -64,6 +69,11 @@ export const childRoutes = [
   {
     path: '/topics',
     component: Topics,
+    exactly: true
+  },
+  {
+    path: '/video',
+    component: Video,
     exactly: true
   }
 ];
