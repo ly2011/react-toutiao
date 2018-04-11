@@ -1,0 +1,16 @@
+.content-wrapper {
+  width: 100%;
+  height: calc(100% - 0.4rem);
+
+  .swiper-container {
+    height: 100%;
+    .swiper-slide {
+      height: 100%;
+      .swiper-box {
+        width: 100%;
+        height: 100%;
+        overflow-y: scroll;
+      }
+    }
+  }
+}

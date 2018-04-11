@@ -7,20 +7,21 @@ import * as comActions from '@/store/actions/com';
 import * as homeActions from '@/store/actions/home';
 
 import TopBar from './components/TopBar/index';
+import Content from './components/Content';
 
 import styles from './style.scss';
 
 class Home extends Component {
   async componentDidMount() {
-    const { fetchTopics } = this.props.actions;
-    try {
-      const result = await fetchTopics();
-      if (result.success) {
-        console.log('topics: ', result);
-      } else {
-        console.log('请求失败');
-      }
-    } catch (error) {}
+    // const { fetchTopics } = this.props.actions;
+    // try {
+    //   const result = await fetchTopics();
+    //   if (result.success) {
+    //     console.log('topics: ', result);
+    //   } else {
+    //     console.log('请求失败');
+    //   }
+    // } catch (error) {}
   }
   // async getListOfNew(newsIndex) {
   //   const { fetchListOfNews } = this.props.actions;
@@ -35,6 +36,12 @@ class Home extends Component {
     return (
       <div className={styles['home-container']}>
         <TopBar
+          newsIndex={newsIndex}
+          newsList={newsList}
+          fetchListOfNews={fetchListOfNews}
+          setNewsIndex={setNewsIndex}
+        />
+        <Content
           newsIndex={newsIndex}
           newsList={newsList}
           fetchListOfNews={fetchListOfNews}

@@ -9,4 +9,7 @@ import './styles/css/swiper.css';
 import './utils/iconfont';
 import './utils/rem';
 
+import initReactFastclick from 'react-fastclick';
+initReactFastclick(); // 解决IOS onClick不生效
+
 ReactDOM.render(<App />, document.getElementById('app'));

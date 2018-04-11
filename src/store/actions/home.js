@@ -36,12 +36,14 @@ export const fetchListOfNews = ({ list, params }, { newsIndex, newsList, hasMore
       return;
     }
   }
+
   dispatch(loading(true));
   return new Promise((resolve, reject) =>
     getListOfNews(params)
       .then(res => {
+        const list = res.data.list;
         dispatch(loading(false));
-        dispatch(receiveListOfNews(res.data, newsIndex));
+        dispatch(receiveListOfNews(list, newsIndex));
         resolve(res);
       })
       .catch(error => {

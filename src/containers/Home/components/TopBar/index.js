@@ -33,6 +33,7 @@ class TopBar extends Component {
     if (this.swiper) this.swiper.slideTo(index - 2 >= 0 ? index - 2 : 0, 500, false);
     this.getListOfNews(index);
   }
+
   toggleTopBarBox(show) {
     this.setState({
       isTopBarBox: show
