@@ -61,10 +61,10 @@ class Content extends Component {
     this.swiper = null;
   }
 
-  componentDidMount() {
-    const index = this.props.newsIndex;
-    if (this.swiper) this.swiper.slideTo(index - 2 >= 0 ? index - 2 : 0, 500, false);
-  }
+  // componentDidMount() {
+  //   const index = this.props.newsIndex;
+  //   if (this.swiper) this.swiper.slideTo(index - 2 >= 0 ? index - 2 : 0, 500, false);
+  // }
   async getListOfNews(newsIndex) {
     const { fetchListOfNews } = this.props;
     const { newsList } = this.props;
@@ -84,7 +84,7 @@ class Content extends Component {
 
   render() {
     const { newsList = [], newsIndex } = this.props;
-
+    this.swiper && this.swiper.slideTo(newsIndex);
     return (
       <div className={styles['content-wrapper']}>
         <Swiper

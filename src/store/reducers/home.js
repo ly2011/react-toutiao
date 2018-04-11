@@ -46,7 +46,6 @@ const homeState = (state = initialState, action) => {
 
     case types.SET_NEWS_INDEX: {
       state.newsIndex = action.payload;
-      console.log('SET_NEWS_INDEX: ', action.payload);
       return { ...state };
     }
 
