@@ -1,5 +1,5 @@
 import React from 'react';
-import { Router, Route, Link, Switch } from 'react-router-dom';
+import { HashRouter, Route, Switch } from 'react-router-dom';
 
 // import asyncComponent from '../utils/AsyncComponent'
 import Loadable from 'react-loadable';
@@ -30,33 +30,55 @@ const Topics = Loadable({
   loading: Loading
 });
 
+const Login = Loadable({
+  loader: () => import('../containers/Login'),
+  loading: Loading
+});
+
+const BasicLayout = Loadable({
+  loader: () => import('../layouts/BasicLayout'),
+  loading: Loading
+});
+
+const NotFound = () => (
+  <div className="not-found">
+    <h2 className="title">页面不存在</h2>
+  </div>
+);
+
 const history = createHistory();
+// const location = history.location;
 
-const RouterConfig = () => {
+// childRoutes
+export const childRoutes = [
+  {
+    path: '/index',
+    component: Home,
+    exactly: true
+  },
+  {
+    path: '/about',
+    component: About,
+    exactly: true
+  },
+  {
+    path: '/topics',
+    component: Topics,
+    exactly: true
+  }
+];
+
+const routes = () => {
   return (
-    <Router history={history}>
-      <div>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-          <li>
-            <Link to="/topics">Topics</Link>
-          </li>
-        </ul>
-
-        <hr />
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/about" component={About} />
-          <Route path="/topics" component={Topics} />
-        </Switch>
-      </div>
-    </Router>
+    <HashRouter history={history}>
+      <Switch>
+        <Route path="/login" component={Login} />
+        <Route path="/" component={BasicLayout} />
+        <Route path="/404" component={NotFound} />
+        {/* {location.hash === '#/' ? <Redirect to="/login" /> : ''} */}
+      </Switch>
+    </HashRouter>
   );
 };
 
-export default RouterConfig;
+export default routes;

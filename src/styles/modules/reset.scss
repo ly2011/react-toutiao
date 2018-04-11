@@ -186,3 +186,11 @@ input:-webkit-autofill {
   /* Internet Explorer 10-11 */
   color: #c0c4cc;
 }
+
+img {
+  border-style: none;
+}
+
+svg:not(:root) {
+  overflow: hidden;
+}

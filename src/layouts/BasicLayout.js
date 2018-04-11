@@ -1,102 +1,25 @@
-/* import React, { Fragment, PureComponent } from 'react';
-import PropTypes from 'prop-types';
-import { Layout, Icon, message } from 'antd';
-import DocumentTitle from 'react-document-title';
-import { ContainerQuery } from 'react-container-query';
+import React, { Component } from 'react';
+import { Route } from 'react-router-dom';
 
-import classNames from 'classnames';
-import { enquireScreen } from 'enquire-js';
+import { childRoutes } from '@/router';
+import styles from './BasicLayout.scss';
+import HeaderBar from './components/HeaderBar';
+import FooterBar from './components/FooterBar';
 
-import GlobalHeader from '@/components/GlobalHeader';
-
-const { Content, Header, Footer } = Layout;
-
-const query = {
-  'screen-xs': {
-    maxWidth: 575
-  },
-  'screen-sm': {
-    minWidth: 576,
-    maxWidth: 767
-  },
-  'screen-md': {
-    minWidth: 768,
-    maxWidth: 991
-  },
-  'screen-lg': {
-    minWidth: 992,
-    maxWidth: 1199
-  },
-  'screen-xl': {
-    minWidth: 1200
-  }
-};
-
-let isMobile;
-
-enquireScreen(b => {
-  isMobile = b;
-});
-
-class BasicLayout extends PureComponent {
-  static childContextTypes = {
-    location: PropTypes.object
-    // breadcrumbNameMap: PropTypes.object
-  };
-  state = {
-    isMobile
-  };
-  getChildContext() {
-    const { location } = this.props;
-
-    return {
-      location
-    };
-  }
-  componentDidMount() {
-    enquireScreen(mobile => {
-      this.setState({
-        isMobile: mobile
-      });
-    });
-    // this.props.dispatch({
-    //   type: 'user/fetchCurrent'
-    // })
-  }
-
+class BasicLayout extends Component {
   render() {
-    const { currentUser, collapsed, fetchingNotices, notices, match, location } = this.props;
-
-    const layout = (
-      <Layout>
-        <Layout>
-          <Header style={{ padding: 0 }}>
-            <GlobalHeader
-              // logo={logo}
-              currentUser={currentUser}
-              fetchingNotices={fetchingNotices}
-              notices={notices}
-              collapsed={collapsed}
-              isMobile={this.state.isMobile}
-              // onNoticeClear={this.handleNoticeClear}
-              // onCollapse={this.handleMenuCollapse}
-              // onMenuClick={this.handleMenuClick}
-              // onNoticeVisibleChange={this.handleNoticeVisibleChange}
-            />
-          </Header>
-
-          <Content style={{ margin: '24px 24px 0', height: '100%' }} />
-        </Layout>
-      </Layout>
-    );
-
     return (
-      <DocumentTitle title={this.getPageTitle()}>
-        <ContainerQuery query={query}>{params => <div className={classNames(params)}>{layout}</div>}</ContainerQuery>
-      </DocumentTitle>
+      <div className={styles['app-wrapper']}>
+        <HeaderBar />
+        <div className={styles['main-container']}>
+          {childRoutes.map((route, index) => (
+            <Route key={index} path={route.path} component={route.component} exact={route.exactly} />
+          ))}
+        </div>
+        <FooterBar />
+      </div>
     );
   }
 }
 
 export default BasicLayout;
- */

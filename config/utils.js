@@ -40,9 +40,6 @@ exports.cssLoaders = function(options) {
       config: {
         path: '.postcssrc.js'
       }
-      // plugins: [
-      //   require('postcss-cssnext')()
-      // ]
     }
   };
 

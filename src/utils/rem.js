@@ -3,7 +3,7 @@
     resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
     refresh = function() {
       var w = docEl.clientWidth,
-        dpr = win.devicePixelRatio || 1;
+        dpr = win.devicePixelRatio || 1; // eslint-disable-line
 
       docEl.style.fontSize = 100 * (w / 375) + 'px';
 

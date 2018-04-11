@@ -1,3 +1,66 @@
 body {
   color: #333;
 }
+
+.df-sb {
+  justify-content: space-between;
+}
+
+.df-sa,
+.df-sb {
+  display: flex;
+  align-items: center;
+}
+.df-sa {
+  justify-content: space-around;
+}
+
+.df-c {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tb-c {
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.ts-c {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.ts-mc {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  margin: auto;
+}
+
+.mask-fixed-wrapper {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.65);
+  z-index: 999;
+}
+
+.bg-cover {
+  background-size: cover;
+}
+
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
