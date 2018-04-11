@@ -26,3 +26,12 @@ export const getListOfNews = ({ id, title } = {}) => {
     }
   });
 };
+
+export const getVideoList = (params = {}) => {
+  return request({
+    baseURL: TOU_TIAO_BASE_URL,
+    method: 'get',
+    url: '/video/list',
+    params: params
+  });
+};
