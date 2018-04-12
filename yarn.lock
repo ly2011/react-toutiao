@@ -8385,6 +8385,12 @@ react-pull-to-refresh@^1.1.1:
     hammerjs "^2.0.4"
     prop-types "^15.5.10"
 
+react-pullload@^1.1.0:
+  version "1.1.0"
+  resolved "http://registry.npm.taobao.org/react-pullload/download/react-pullload-1.1.0.tgz#385ab0b795e628202e062bf68555444f205c1e27"
+  dependencies:
+    prop-types "^15.6.0"
+
 react-redux@^5.0.7:
   version "5.0.7"
   resolved "http://registry.npm.taobao.org/react-redux/download/react-redux-5.0.7.tgz#0dc1076d9afb4670f993ffaef44b8f8c1155a4c8"

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import ReactPullToRefresh from 'react-pull-to-refresh';
+import ReactPullLoad, { STATS } from 'react-pullload';
+import 'react-pullload/dist/ReactPullLoad.css';
 
 /* actions*/
 import * as videoActions from '@/store/actions/video';
@@ -11,7 +13,9 @@ import styles from './style.scss';
 
 class Video extends Component {
   state = {
-    pageindex: 1
+    pageindex: 1,
+    hasMore: true,
+    action: STATS.init
   };
   componentWillMount() {
     this.getVideoList(this.state.pageindex);
@@ -35,6 +39,75 @@ class Video extends Component {
       })
       .catch(() => {
         reject();
+      });
+  };
+  handleAction = action => {
+    console.info(action, this.state.action, action === this.state.action);
+    //new action must do not equel to old action
+    if (action === this.state.action) {
+      return false;
+    }
+    if (action === STATS.refreshing) {
+      // 刷新
+      this.handleRefresh();
+    } else if (action === STATS.loading) {
+      // 加载更多
+      this.handLoadMore();
+    } else {
+      this.setState({
+        action: action
+      });
+    }
+  };
+  handRefreshing = () => {
+    if (STATS.refreshing === this.state.action) {
+      return false;
+    }
+    this.loadData(() => {
+      // refreshing complete
+      this.setState({
+        hasMore: true,
+        action: STATS.refreshed
+      });
+    });
+    this.setState({
+      action: STATS.refreshing
+    });
+  };
+
+  handLoadMore = () => {
+    if (STATS.loading === this.state.action) {
+      return false;
+    }
+    //无更多内容则不执行后面逻辑
+    if (!this.state.hasMore) {
+      return;
+    }
+    this.loadData(() => {
+      // loadMore complete
+      this.setState({
+        hasMore: false,
+        action: STATS.reset
+      });
+    });
+    this.setState({
+      action: STATS.loading
+    });
+  };
+
+  loadData = callback => {
+    let { pageindex } = this.state;
+    pageindex++;
+    this.setState({ pageindex });
+    const { fetchVideoList } = this.props.actions;
+    fetchVideoList({
+      pageindex: pageindex
+    })
+      .then(() => {
+        callback && callback();
+      })
+      .catch(() => {
+        callback && callback();
       });
   };
   // canvas 绘制
@@ -72,8 +145,16 @@ class Video extends Component {
   }
   render() {
     const { videoList } = this.props.video;
+    const { hasMore } = this.state;
     return (
-      <ReactPullToRefresh onRefresh={this.handleRefresh}>
+      <ReactPullLoad
+        downEnough={150}
+        action={this.state.action}
+        handleAction={this.handleAction}
+        hasMore={hasMore}
+        style={{ paddingTop: 50 }}
+        distanceBottom={1000}
+      >
         <div className={styles['video-container']}>
           {videoList.map((item, index) => (
             <section key={index} className={styles['item']}>
@@ -106,7 +187,7 @@ class Video extends Component {
                       this.play(index, item);
                     }}
                   >
-                    <IconSvg iconName="play" />
+                    <IconSvg name="play" />
                   </div>
                 ) : (
                   ''
@@ -135,17 +216,24 @@ class Video extends Component {
                       <div>已关注</div>
                     ) : (
                       <div>
-                        <IconSvg iconName="attention" />
+                        <IconSvg name="attention" />
                         <span>关注</span>
                       </div>
                     )}
+                  </div>
+                  <div>
+                    <IconSvg name="custom-comment" />
+                    <span>{item.comment_num || '评论'}</span>
+                  </div>
+                  <div>
+                    <IconSvg name="More" />
                   </div>
                 </div>
               </div>
             </section>
           ))}
         </div>
-      </ReactPullToRefresh>
+      </ReactPullLoad>
     );
   }
 }
