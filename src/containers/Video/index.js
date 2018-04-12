@@ -147,7 +147,9 @@ class Video extends Component {
     const { videoList } = this.props.video;
     const { hasMore } = this.state;
     return (
-      <div className={`${styles['video-container']} ${styles['video-wrapper']}`}>
+      <div
+        className={`${styles['video-container']} ${styles['video-wrapper']}`}
+      >
         <ReactPullLoad
           downEnough={150}
           action={this.state.action}
@@ -156,84 +158,82 @@ class Video extends Component {
           style={{ paddingTop: 50 }}
           distanceBottom={1000}
         >
-          <div className={`${styles['video-container']} ${styles['video-wrapper']}`}>
-            {videoList.map((item, index) => (
-              <section key={index} className={styles['item']}>
-                <div className={styles['video']}>
-                  <video src={item.video} />
+          {videoList.map((item, index) => (
+            <section key={index} className={styles['item']}>
+              <div className={styles['video']}>
+                <video src={item.video} />
+                <div
+                  className={`${styles['canvas-video']} bg-cover`}
+                  style={{
+                    backgroundImage: `url(${item.images})`
+                  }}
+                >
+                  <canvas
+                    onClick={e => {
+                      this.pause(index, item);
+                    }}
+                  />
+                </div>
+                {!item.playBol ? (
+                  <div className={styles['title']}>
+                    <h4>{item.title}</h4>
+                    <small>{item.video_num}次播放</small>
+                  </div>
+                ) : (
+                  ''
+                )}
+                {!item.playBol ? (
                   <div
-                    className={`${styles['canvas-video']} bg-cover`}
-                    style={{
-                      backgroundImage: `url(${item.images})`
+                    className={styles['play']}
+                    onClick={e => {
+                      this.play(index, item);
                     }}
                   >
-                    <canvas
-                      onClick={e => {
-                        this.pause(index, item);
-                      }}
-                    />
+                    <IconSvg name="play" />
                   </div>
-                  {!item.playBol ? (
-                    <div className={styles['title']}>
-                      <h4>{item.title}</h4>
-                      <small>{item.video_num}次播放</small>
-                    </div>
-                  ) : (
-                    ''
-                  )}
-                  {!item.playBol ? (
-                    <div
-                      className={styles['play']}
-                      onClick={e => {
-                        this.play(index, item);
-                      }}
-                    >
-                      <IconSvg name="play" />
-                    </div>
-                  ) : (
-                    ''
-                  )}
-                  {!item.playBol ? <time>{item.time}</time> : ''}
-                  {!item.playBol ? (
-                    <div
-                      className={`${styles['avatar']} bg-cover-all`}
-                      style={{
-                        backgroundImage: `url(${item.image})`
-                      }}
-                    />
-                  ) : (
-                    ''
-                  )}
-                </div>
-                <div className={`${styles['intro']} df-sb`}>
-                  <div className={styles['source']}>{item.source}</div>
-                  <div className={`${styles['box']} df-c`}>
-                    <div
-                      onClick={e => {
-                        this.attrReverse(item, 'attention');
-                      }}
-                    >
-                      {item.attention ? (
-                        <div>已关注</div>
-                      ) : (
-                        <div>
-                          <IconSvg name="attention" />
-                          <span>关注</span>
-                        </div>
-                      )}
-                    </div>
-                    <div>
-                      <IconSvg name="custom-comment" />
-                      <span>{item.comment_num || '评论'}</span>
-                    </div>
-                    <div>
-                      <IconSvg name="More" />
-                    </div>
+                ) : (
+                  ''
+                )}
+                {!item.playBol ? <time>{item.time}</time> : ''}
+                {!item.playBol ? (
+                  <div
+                    className={`${styles['avatar']} bg-cover-all`}
+                    style={{
+                      backgroundImage: `url(${item.image})`
+                    }}
+                  />
+                ) : (
+                  ''
+                )}
+              </div>
+              <div className={`${styles['intro']} df-sb`}>
+                <div className={styles['source']}>{item.source}</div>
+                <div className={`${styles['box']} df-c`}>
+                  <div
+                    onClick={e => {
+                      this.attrReverse(item, 'attention');
+                    }}
+                  >
+                    {item.attention ? (
+                      <div>已关注</div>
+                    ) : (
+                      <div>
+                        <IconSvg name="attention" />
+                        <span>关注</span>
+                      </div>
+                    )}
+                  </div>
+                  <div>
+                    <IconSvg name="custom-comment" />
+                    <span>{item.comment_num || '评论'}</span>
+                  </div>
+                  <div>
+                    <IconSvg name="More" />
                   </div>
                 </div>
-              </section>
-            ))}
-          </div>
+              </div>
+            </section>
+          ))}
         </ReactPullLoad>
       </div>
     );
