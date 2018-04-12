@@ -1,9 +1,11 @@
+import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import 'nprogress/nprogress.css';
 import './global.scss';
 import './styles/index.scss';
 import './styles/css/swiper.css';
+import App from './App';
 
 /* 工具类 */
 import './utils/iconfont';

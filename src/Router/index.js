@@ -1,49 +1,55 @@
 import React from 'react';
 import { HashRouter, Route, Switch } from 'react-router-dom';
 
-// import asyncComponent from '../utils/AsyncComponent'
+import asyncComponent from '../utils/AsyncComponent';
 import Loadable from 'react-loadable';
 import createHistory from 'history/createBrowserHistory';
 
 import Loading from '../components/Loading';
 
-// import Home from '../containers/Home'
-// import About from '../containers/About'
-// import Topics from '../containers/Topics'
+import BasicLayout from '../layouts/BasicLayout';
+
+import Home from '../containers/Home';
+import About from '../containers/About';
+import Topics from '../containers/Topics';
+import Login from '../containers/Login';
+import Video from '../containers/Video';
 
 // 懒加载的第一种方式：
-// const Home = asyncComponent(() => import(/* webpackChunkName: "home" */ '../containers/Home'))
-// const About = asyncComponent(() => import(/* webpackChunkName: "about" */ '../containers/About'))
-// const Topics = asyncComponent(() => import(/* webpackChunkName: "topics" */ '../containers/Topics'))
+// const Home = asyncComponent(() => import(/* webpackChunkName: "home" */ '../containers/Home'));
+// const About = asyncComponent(() => import(/* webpackChunkName: "about" */ '../containers/About'));
+// const Topics = asyncComponent(() => import(/* webpackChunkName: "topics" */ '../containers/Topics'));
+// const Login = asyncComponent(() => import(/* webpackChunkName: "Login" */ '../containers/Login'));
+// const Video = asyncComponent(() => import(/* webpackChunkName: "Video" */ '../containers/Video'));
 
 // 懒加载的第二中方式：Loadable
-const Home = Loadable({
-  loader: () => import('../containers/Home'),
-  loading: Loading
-});
-const About = Loadable({
-  loader: () => import('../containers/About'),
-  loading: Loading
-});
-const Topics = Loadable({
-  loader: () => import('../containers/Topics'),
-  loading: Loading
-});
+// const Home = Loadable({
+//   loader: () => import('../containers/Home'),
+//   loading: Loading
+// });
+// const About = Loadable({
+//   loader: () => import('../containers/About'),
+//   loading: Loading
+// });
+// const Topics = Loadable({
+//   loader: () => import('../containers/Topics'),
+//   loading: Loading
+// });
 
-const Login = Loadable({
-  loader: () => import('../containers/Login'),
-  loading: Loading
-});
+// const Login = Loadable({
+//   loader: () => import('../containers/Login'),
+//   loading: Loading
+// });
 
-const Video = Loadable({
-  loader: () => import('../containers/Video'),
-  loading: Loading
-});
+// const Video = Loadable({
+//   loader: () => import('../containers/Video'),
+//   loading: Loading
+// });
 
-const BasicLayout = Loadable({
-  loader: () => import('../layouts/BasicLayout'),
-  loading: Loading
-});
+// const BasicLayout = Loadable({
+//   loader: () => import('../layouts/BasicLayout'),
+//   loading: Loading
+// });
 
 const NotFound = () => (
   <div className="not-found">

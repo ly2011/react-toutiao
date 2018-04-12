@@ -1,13 +1,13 @@
 const merge = require('webpack-merge');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 const path = require('path');
 
 const baseWebpackConfig = require('./webpack.base.conf');
-const utils = require('./utils')
+const utils = require('./utils');
 
 const bundleAnalyzerReport = process.env.npm_config_report;
 
@@ -37,15 +37,15 @@ const webpackConfig = merge(baseWebpackConfig, {
       cacheGroups: {
         js: {
           test: /\.js$/,
-          name: "commons",
-          chunks: "all",
-          minChunks: 7,
+          name: 'commons',
+          chunks: 'all',
+          minChunks: 7
         },
         css: {
           test: /\.(css|less|sass|scss)$/,
-          name: "commons",
-          chunks: "all",
-          minChunks: 2,
+          name: 'commons',
+          chunks: 'all',
+          minChunks: 2
         }
       }
     }
@@ -61,7 +61,7 @@ const webpackConfig = merge(baseWebpackConfig, {
       // filename: '[name].[md5:contenthash:hex:20].css', // webpack4.3以上版本存在bug
       filename: utils.assetsPath('css/[name].[md5:contenthash:hex:20].css'),
       allChunks: false // 制定提取css的范围,提取初始化（非异步加载）,此时在commonChunk插件下，css也会被当成一个chunk,所有要用contenthash
-    }),
+    })
     // new MiniCssExtractPlugin({
     //   filename: "[name].css",
     //   chunkFilename: "[id].css",
@@ -71,8 +71,7 @@ const webpackConfig = merge(baseWebpackConfig, {
 });
 
 if (bundleAnalyzerReport) {
-  const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
-    .BundleAnalyzerPlugin;
+  const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
   webpackConfig.plugins.push(new BundleAnalyzerPlugin());
 }
 module.exports = webpackConfig;

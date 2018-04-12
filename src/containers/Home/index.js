@@ -34,7 +34,7 @@ class Home extends Component {
     const { newsList, newsIndex } = this.props.home;
     const { fetchListOfNews, setNewsIndex } = this.props.actions;
     return (
-      <div className={styles['home-container']}>
+      <div className={`${styles['home-container']} ${styles['home-wrapper']}`}>
         <TopBar
           newsIndex={newsIndex}
           newsList={newsList}

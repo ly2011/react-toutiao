@@ -98,6 +98,7 @@
     "@types/react-router-dom": "^4.2.5",
     "antd": "^3.2.3",
     "axios": "^0.18.0",
+    "babel-polyfill": "^6.26.0",
     "classnames": "^2.2.5",
     "date-fns": "^1.29.0",
     "enquire-js": "^0.2.1",

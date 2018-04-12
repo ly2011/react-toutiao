@@ -10,7 +10,7 @@ const settingState = (state = initialState, action) => {
     case types.COM_CONF: {
       return { ...state, ...action.settings };
     }
-    case types.COM_LOADINGS_STATUS: {
+    case types.COM_LOADING_STATUS: {
       return {
         ...state,
         ...{ loading: action.loading }

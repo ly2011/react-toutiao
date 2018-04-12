@@ -195,12 +195,13 @@ module.exports = {
 
       // Optional
       appMountId: 'app',
-      title: 'react-toutiao',
+      title: '今日头条',
       favicon: path.join(PATHS.src, 'favicon.ico'),
       meta: [
         {
           name: 'description',
-          content: 'A better default template for html-webpack-plugin.'
+          content:
+            '《今日头条》(www.toutiao.com)是一款基于数据挖掘的推荐引擎产品，它为用户推荐有价值的、个性化的信息，提供连接人与信息的新型服务，是国内移动互联网领域成长最快的产品服务之一。'
         },
         {
           name: 'robots',
